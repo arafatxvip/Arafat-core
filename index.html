@@ -1,9 +1,409 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <title>Arafat Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahin Ahmed | Portfolio </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* style.css content incorporated */
+        .nav-link.active {                
+            color: #ec4899;                
+            border-bottom: 2px solid #ec4899;
+            padding-bottom: 4px;
+        }
+
+        /* Updated animations to be subtle pulse instead of spin */
+        @keyframes gentlePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        .animate-pulse {
+            animation: gentlePulse 3s ease-in-out infinite;
+        }
+
+        /* Hover effects for buttons */
+        .popup-item {
+            transition: all 0.3s ease;
+        }
+        .popup-item:hover {
+            transform: scale(1.1);
+            background-color: #f472b6; /* Lighter pink */
+        }
+
+        /* Video container styling */
+        video {
+            background-color: #1e0a13;
+        }
+    </style>
 </head>
-<body>
-  <h1>Hello Arafat 🔥</h1>
+<body class="bg-[#1e0a13] text-gray-200 font-sans overflow-x-hidden">
+    <div id="splash-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/50 transition-opacity duration-1000">
+        <img src="https://files.catbox.moe/bhtv1l.jpg" alt="Cute Welcome Background" class="absolute inset-0 w-full h-full object-cover z-0">
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <div class="relative z-20 text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold text-pink-300 mb-12 [text-shadow:_0_0_20px_rgb(236_72_153_/_50%)]">Welcome to my Portfolio Website 🌷</h1>
+            
+            <div class="relative w-64 h-64 mx-auto flex items-center justify-center">
+                <div class="absolute z-30 text-xl font-bold text-white bg-pink-600/30 backdrop-blur-md px-6 py-3 rounded-full border-2 border-pink-400 shadow-[0_0_15px_#ec4899]">
+                    WELCOME BABY 🎀
+                </div>
+                <div class="absolute z-30 -top-4 text-xs text-green-300 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full border border-green-400">
+                    <i class="fa-solid fa-circle text-[8px] text-green-400 animate-pulse mr-1"></i> ONLINE
+                </div>
+                <div class="absolute w-full h-full rounded-full border-2 border-pink-500/50 shadow-[0_0_20px_#ec4899]">
+                    <button onclick="showCodeInfo()" class="popup-item absolute -top-4 left-1/2 transform -translate-x-1/2 bg-pink-500 text-white text-xs px-4 py-2 rounded-full hover:bg-pink-400 transition-all shadow-lg font-medium">
+                        <i class="fa-solid fa-code mr-1"></i> Code <span class="text-pink-200">✨</span>
+                    </button>
+                    <a href="https://facebook.com/RentaroAijo.4x" target="_blank" class="popup-item absolute bottom-1/4 -right-5 bg-pink-500 text-white text-xs px-4 py-2 rounded-full hover:bg-pink-400 transition-all shadow-lg font-medium">
+                        <i class="fa-solid fa-user mr-1"></i> Profile <span class="text-pink-200">🌸</span>
+                    </a>
+                    <a href="https://github.com/Dbz-Mahin7x/Portfolio-Web" target="_blank" class="popup-item absolute bottom-1/4 -left-5 bg-pink-500 text-white text-xs px-4 py-2 rounded-full hover:bg-pink-400 transition-all shadow-lg font-medium">
+                        <i class="fa-solid fa-code-branch mr-1"></i> Source <span class="text-pink-200">🎀</span>
+                    </a>
+                </div>
+            </div>
+            <div class="absolute bottom-10 left-5 text-pink-300 text-2xl animate-pulse">🌸</div>
+            <div class="absolute top-20 right-10 text-pink-400 text-3xl animate-pulse">✨</div>
+        </div>
+    </div>
+    
+    <nav class="fixed top-0 w-full z-40 bg-[#1e0a13]/90 backdrop-blur-md border-b border-pink-900/50 hidden" id="main-nav">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-center gap-4 md:gap-8 text-sm md:text-base font-medium nav-links">
+            <a href="#home" class="nav-link text-pink-500 hover:text-pink-300 transition"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="#about" class="nav-link hover:text-pink-300 transition"><i class="fa-solid fa-address-card"></i> About</a>
+            <a href="#projects" class="nav-link hover:text-pink-300 transition"><i class="fa-solid fa-folder-open"></i> Projects</a>
+            <a href="#services" class="nav-link hover:text-pink-300 transition"><i class="fa-solid fa-code"></i> Services</a>
+            <a href="#contact" class="nav-link hover:text-pink-300 transition"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="hidden pt-20">
+        <section id="home" class="min-h-screen flex items-center max-w-6xl mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+                <div class="space-y-6">
+                    <div class="inline-block px-4 py-1 rounded-full border border-pink-500/50 text-pink-400 text-sm animate-pulse bg-pink-500/10">
+                        ✨ Available for freelance work 💕
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold">Hey I'm <span class="text-pink-500 hover:text-pink-300 transition drop-shadow-[0_0_10px_#ec4899]">Mahin</span> <span class="text-3xl">🌸</span></h1>
+                    <h2 class="text-2xl text-gray-400 font-semibold">Website Developer & UI/UX Enthusiast</h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        I create cute and sweet features that help in multiple ways. With 1+ year of experience, I bring small ideas to life and dream of something new every day 🌷. Currently exploring modern web technologies and design patterns.
+                    </p>
+                    <div class="flex gap-4 items-center text-sm text-gray-400">
+                        <span class="hover:text-pink-500 transition"><i class="fa-solid fa-location-dot text-pink-500"></i> Based in Bangladesh</span>
+                        <span class="hover:text-pink-500 transition"><i class="fa-solid fa-graduation-cap text-pink-500"></i> High School Student</span>
+                    </div>
+                    <div class="pt-4 flex gap-4">
+                        <button class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-lg font-medium transition shadow-lg shadow-pink-500/30 hover:scale-105">
+                            <i class="fa-solid fa-heart mr-2"></i>Working On Myself
+                        </button>
+                        <a href="#contact" class="border border-pink-600 hover:bg-pink-600/20 text-white px-8 py-3 rounded-lg font-medium transition">
+                            Hire Me <i class="fa-regular fa-star ml-1"></i>
+                        </a>
+                    </div>
+                    <div class="flex gap-4 pt-4 text-xl">
+                        <a href="https://github.com/Dbz-Mahin7x" target="_blank" class="hover:text-pink-500 transition hover:scale-110"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://m.me/RentaroAijo.4x" target="_blank" class="hover:text-pink-500 transition hover:scale-110"><i class="fa-brands fa-facebook-messenger"></i></a>
+                        <a href="https://facebook.com/RentaroAijo.4x" target="_blank" class="hover:text-pink-500 transition hover:scale-110"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://instagram.com/dbz_mahin" target="_blank" class="hover:text-pink-500 transition hover:scale-110"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="relative flex justify-center">
+                    <div class="w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden border-2 border-pink-500/30 shadow-2xl shadow-pink-500/20 hover:border-pink-500 transition group">
+                        <img src="https://files.catbox.moe/9a6vtb.jpg" alt="Mahin" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="absolute -bottom-5 -right-5 text-pink-400 text-4xl animate-pulse">💖</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="min-h-screen flex items-center max-w-6xl mx-auto px-6 py-20 border-t border-pink-900/30">
+            <div class="grid md:grid-cols-3 gap-12 items-start w-full">
+                <div class="col-span-1 bg-[#2a0e18] p-6 rounded-2xl border border-pink-900/50 text-center text-white hover:border-pink-500 transition shadow-xl">
+                    <img src="https://files.catbox.moe/2czabm.jpg" alt="Mahin Profile" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-pink-500 hover:scale-110 transition">
+                    <h3 class="text-xl font-bold">Mahin Ahmed</h3>
+                    <p class="text-pink-400 text-sm">Web Developer</p>
+                    <div class="mt-4 flex justify-center gap-2">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        <span class="text-xs text-gray-400">Open to work</span>
+                    </div>
+                    <div class="mt-3 text-pink-300">🎮 💻 ☕</div>
+                </div>
+                <div class="col-span-2 space-y-6">
+                    <h2 class="text-4xl font-bold text-pink-500 flex items-center gap-2">ABOUT ME <span class="text-2xl">🎀</span></h2>
+                    <div class="space-y-4 text-gray-300 leading-relaxed">
+                        <p>Hey I am Mahin Ahmed. I am a little UI/UX designer and a web developer in Bangladesh. 🎀</p>
+                        <p>I am currently a High school student. I am interested in Computer Science 🍂. I am trying to develop a deep interest in designing intuitive and visually appealing user interfaces that bring ideas to life on the Web 🌷</p>
+                        <p>I am focused on modern web design, responsive layouts, and interactive user experiences that blend beauty with functionality 🍃.</p>
+                        <h4 class="text-xl font-semibold text-white pt-4">Currently improving my skills in:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-pink-200">
+                            <li>Figma and Adobe XD for UI/UX design</li>
+                            <li>HTML 🥂 CSS 🍷 JavaScript 🍭 And Tailwind CSS 🍫 For Web development</li>
+                            <li>Creating Personal Projects and Exploring New UI features for my Portfolio ❤️‍🩹🪽</li>
+                        </ul>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-video text-pink-500"></i> My Recent Works <span class="text-sm text-pink-300">(click to play)</span>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-[#1e0a13] rounded-xl overflow-hidden border border-pink-900/50 group hover:border-pink-500 transition">
+                                <video class="w-full h-40 object-cover" controls preload="metadata">
+                                    <source src="https://files.catbox.moe/sctmcb.mp4" type="video/mp4">
+                                </video>
+                                <div class="p-3">
+                                    <h4 class="font-bold text-white text-sm">UI Animation Demo</h4>
+                                    <p class="text-xs text-gray-400 mt-1">Smooth interface transitions</p>
+                                </div>
+                            </div>
+                            <div class="bg-[#1e0a13] rounded-xl overflow-hidden border border-pink-900/50 group hover:border-pink-500 transition">
+                                <video class="w-full h-40 object-cover" controls preload="metadata">
+                                    <source src="https://files.catbox.moe/saqy79.mp4" type="video/mp4">
+                                </video>
+                                <div class="p-3">
+                                    <h4 class="font-bold text-white text-sm">Responsive Design</h4>
+                                    <p class="text-xs text-gray-400 mt-1">Mobile-first approach</p>
+                                </div>
+                            </div>
+                            <div class="bg-[#1e0a13] rounded-xl overflow-hidden border border-pink-900/50 group hover:border-pink-500 transition">
+                                <video class="w-full h-40 object-cover" controls preload="metadata">
+                                    <source src="https://files.catbox.moe/bdb1cw.mp4" type="video/mp4">
+                                </video>
+                                <div class="p-3">
+                                    <h4 class="font-bold text-white text-sm">Interactive Features</h4>
+                                    <p class="text-xs text-gray-400 mt-1">JavaScript interactions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="min-h-screen py-20 px-6 max-w-6xl mx-auto border-t border-pink-900/30">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-pink-500 mb-4">Featured Work <span class="text-2xl">🍫</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">A showcase of my recent projects demonstrating creativity, modern design, and technical skills. Each project reflects my passion for building beautiful web experiences.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#2a0e18] rounded-xl overflow-hidden border border-pink-900/50 hover:border-pink-500 transition group">
+                    <img src="https://files.catbox.moe/gtrflh.jpg" alt="Anime Streaming Platform" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Anime Streaming Platform</h3>
+                        <p class="text-sm text-gray-400 mb-3">Modern anime streaming interface with smooth transitions and responsive design</p>
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">HTML5</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">Tailwind CSS</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">JavaScript</span>
+                        </div>
+                        <a href="#" target="_blank" class="text-sm text-pink-500 hover:text-white transition inline-flex items-center gap-1"><i class="fa-solid fa-link"></i> Live Demo</a>
+                    </div>
+                </div>
+                <div class="bg-[#2a0e18] rounded-xl overflow-hidden border border-pink-900/50 hover:border-pink-500 transition group">
+                    <img src="https://files.catbox.moe/9hu6mo.jpg" alt="E-Commerce Store" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">E-Commerce Store</h3>
+                        <p class="text-sm text-gray-400 mb-3">Fully responsive online store with product filtering and shopping cart</p>
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">React</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">Node.js</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                        <a href="#" target="_blank" class="text-sm text-pink-500 hover:text-white transition inline-flex items-center gap-1"><i class="fa-solid fa-link"></i> Live Demo</a>
+                    </div>
+                </div>
+                <div class="bg-[#2a0e18] rounded-xl overflow-hidden border border-pink-900/50 hover:border-pink-500 transition group">
+                    <img src="https://files.catbox.moe/3bnv0e.jpg" alt="Weather Dashboard" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Weather Dashboard</h3>
+                        <p class="text-sm text-gray-400 mb-3">Real-time weather app with beautiful animations and 5-day forecast</p>
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">API</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">Chart.js</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">CSS3</span>
+                        </div>
+                        <a href="#" target="_blank" class="text-sm text-pink-500 hover:text-white transition inline-flex items-center gap-1"><i class="fa-solid fa-link"></i> Live Demo</a>
+                    </div>
+                </div>
+                <div class="bg-[#2a0e18] rounded-xl overflow-hidden border border-pink-900/50 hover:border-pink-500 transition group">
+                    <img src="https://files.catbox.moe/nrd6ln.jpg" alt="Task Management App" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Task Management App</h3>
+                        <p class="text-sm text-gray-400 mb-3">Productivity tool with drag-drop tasks and team collaboration</p>
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">Vue.js</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">Firebase</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">Tailwind</span>
+                        </div>
+                        <a href="#" target="_blank" class="text-sm text-pink-500 hover:text-white transition inline-flex items-center gap-1"><i class="fa-solid fa-link"></i> Live Demo</a>
+                    </div>
+                </div>
+                <div class="bg-[#2a0e18] rounded-xl overflow-hidden border border-pink-900/50 hover:border-pink-500 transition group">
+                    <img src="https://files.catbox.moe/6upkmp.jpg" alt="Portfolio Template" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Portfolio Template</h3>
+                        <p class="text-sm text-gray-400 mb-3">Minimal and clean portfolio template for creatives</p>
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">HTML5</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">SCSS</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">GSAP</span>
+                        </div>
+                        <a href="#" target="_blank" class="text-sm text-pink-500 hover:text-white transition inline-flex items-center gap-1"><i class="fa-solid fa-link"></i> Live Demo</a>
+                    </div>
+                </div>
+                <div class="bg-[#2a0e18] rounded-xl overflow-hidden border border-pink-900/50 hover:border-pink-500 transition group">
+                    <img src="https://files.catbox.moe/mab050.jpg" alt="Social Media Dashboard" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Social Media Dashboard</h3>
+                        <p class="text-sm text-gray-400 mb-3">Analytics dashboard with dark mode and real-time data</p>
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">Next.js</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">D3.js</span>
+                            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded">PostgreSQL</span>
+                        </div>
+                        <a href="#" target="_blank" class="text-sm text-pink-500 hover:text-white transition inline-flex items-center gap-1"><i class="fa-solid fa-link"></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="min-h-screen py-20 px-6 max-w-6xl mx-auto border-t border-pink-900/30">
+            <h2 class="text-4xl font-bold text-pink-500 text-center mb-16">My Services <span class="text-2xl">✨</span></h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#2a0e18] p-6 rounded-xl border border-pink-900/50 hover:-translate-y-2 hover:border-pink-500 transition duration-300">
+                    <i class="fa-solid fa-code text-3xl text-pink-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Web Development</h3>
+                    <p class="text-sm text-gray-400 mb-4">Responsive modern websites using latest technologies. From concept to deployment, ensuring great looks and perfect performance.</p>
+                    <ul class="text-xs text-pink-300 space-y-1">
+                        <li>• Responsive design</li>
+                        <li>• Performance optimisation</li>
+                        <li>• SEO friendly</li>
+                    </ul>
+                </div>
+                <div class="bg-[#2a0e18] p-6 rounded-xl border border-pink-900/50 hover:-translate-y-2 hover:border-pink-500 transition duration-300">
+                    <i class="fa-solid fa-mobile-screen text-3xl text-pink-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Mobile Development</h3>
+                    <p class="text-sm text-gray-400 mb-4">Cross-platform mobile applications that work seamlessly on both iOS and Android devices.</p>
+                    <ul class="text-xs text-pink-300 space-y-1">
+                        <li>• Cross-platform</li>
+                        <li>• Native performance</li>
+                        <li>• User friendly</li>
+                    </ul>
+                </div>
+                <div class="bg-[#2a0e18] p-6 rounded-xl border border-pink-900/50 hover:-translate-y-2 hover:border-pink-500 transition duration-300">
+                    <i class="fa-solid fa-pen-nib text-3xl text-pink-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">UI/UX Design</h3>
+                    <p class="text-sm text-gray-400 mb-4">Intuitive and beautiful user interfaces with focus on usability, accessibility and visual appeal.</p>
+                    <ul class="text-xs text-pink-300 space-y-1">
+                        <li>• User-centered</li>
+                        <li>• Modern design</li>
+                        <li>• Accessibility</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="min-h-screen py-20 px-6 max-w-6xl mx-auto border-t border-pink-900/30">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-4xl font-bold text-pink-500 mb-6">Get In Touch <span class="text-2xl">💌</span></h2>
+                    <p class="text-gray-400 mb-8">Let's collaborate! I'm always open to discuss new projects and technologies.</p>
+                    <div class="space-y-4 mb-8 text-gray-300">
+                        <p class="hover:text-pink-500 transition"><i class="fa-solid fa-envelope text-pink-500 mr-2"></i> Mahinstarou@gmail.com</p>
+                        <p class="hover:text-pink-500 transition"><i class="fa-solid fa-phone text-pink-500 mr-2"></i> Contact via social media ✨</p>
+                        <p class="hover:text-pink-500 transition"><i class="fa-solid fa-location-dot text-pink-500 mr-2"></i> Rajshahi, Bangladesh</p>
+                    </div>
+                    <div class="flex gap-4 text-2xl">
+                        <a href="https://github.com/Dbz-Mahin7x" target="_blank" class="text-gray-400 hover:text-pink-500 transition hover:scale-110"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://m.me/RentaroAijo.4x" target="_blank" class="text-gray-400 hover:text-pink-500 transition hover:scale-110"><i class="fa-brands fa-facebook-messenger"></i></a>
+                        <a href="https://facebook.com/RentaroAijo.4x" target="_blank" class="text-gray-400 hover:text-pink-500 transition hover:scale-110"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="bg-[#2a0e18] p-6 rounded-xl border border-pink-900/50 hover:border-pink-500 transition">
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Your Name" class="w-full bg-[#1e0a13] border border-pink-900/50 p-3 rounded text-white focus:outline-none focus:border-pink-500">
+                        <input type="email" placeholder="Your Email" class="w-full bg-[#1e0a13] border border-pink-900/50 p-3 rounded text-white focus:outline-none focus:border-pink-500">
+                        <textarea placeholder="Your Message" rows="5" class="w-full bg-[#1e0a13] border border-pink-900/50 p-3 rounded text-white focus:outline-none focus:border-pink-500"></textarea>
+                        <button type="button" class="w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded transition font-medium hover:scale-105">Send Message 💕</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        function showCodeInfo() {
+            const cuteMessages = [
+                "🌸 Name: Mahin Ahmed",
+                "🎮 Hobby: Playing games",
+                "🎂 Age: 16",
+                "💔 Relationship status: Single",
+                "💝 Type: Mommy",
+                "🍗 Food: Biriyani",
+                "💧 Drink: Water",
+                "💻 Coding everyday! ✨",
+                "🌟 Fun fact: I love cute things!"
+            ];
+            alert(cuteMessages.join('\n') + '\n\n💕 Meri Jaan, thanks for visiting! 💕');
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const splashScreen = document.getElementById('splash-screen');
+            const mainNav = document.getElementById('main-nav');
+            const mainContent = document.getElementById('main-content');
+            
+            setTimeout(() => {
+                splashScreen.classList.add('opacity-0');
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                    mainNav.classList.remove('hidden');
+                    mainContent.classList.remove('hidden');
+                    window.scrollTo(0, 0);
+                }, 1000);
+            }, 2000); // 2 second delay
+        });
+
+        // Scroll Highlighting Logic
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+        
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute("id");
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        // Pause videos when not in view
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('video').forEach(video => {
+            videoObserver.observe(video);
+        });
+    </script>
 </body>
 </html>
